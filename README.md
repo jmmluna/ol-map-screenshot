@@ -1,5 +1,5 @@
 # ol-map-screenshot
-**ol-map-screenshot** is a simple and easy-to-use library to facilitate the [OpenLayers](https://openlayers.org/) map screenshot.
+**ol-map-screenshot** is a simple and easy-to-use library to facilitate the [OpenLayers](https://openlayers.org/) map screenshot. ol-map-screenshot is inspired by [Map Export](https://openlayers.org/en/latest/examples/export-map.html) and [Export PDF](https://openlayers.org/en/latest/examples/export-pdf.html) examples by OpenLayers.
 
 Currently, **ol-map-screenshot requires OpenLayers version 6.x**.
 
@@ -8,7 +8,7 @@ features
   - Based on promises (**async/await**).
   - Customizable screenshot.
   - JPEG and PNG format supported.
-  - it has the advantage of allowing rendering the map scale bar.
+  - It has the advantage of allowing rendering the map scale bar in the screenshot
 
 ## Usage ##
 For node.js
