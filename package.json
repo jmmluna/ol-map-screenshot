@@ -1,0 +1,40 @@
+{
+    "name": "ol-map-screenshot",
+    "version": "1.0.0",
+    "description": "This project aims to facilitate the openlayers map screenshot. As an added value, it has the advantage of allowing rendering the map scale bar.",
+    "main": "index.js",
+    "scripts": {
+        "start": "parcel example/index.html -p 9000 --no-cache"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jmmluna/ol-map-screenshot.git"
+    },
+    "keywords": [
+        "openlayers",
+        "maps",
+        "ol",
+        "mapping",
+        "webmapping",
+        "sig",
+        "gis"
+    ],
+    "author": {
+        "name": "José María Martínez Luna",
+        "email": "jmmluna@gmail.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/jmmluna/ol-map-screenshot/issues"
+    },
+    "homepage": "https://github.com/jmmluna/ol-map-screenshot#readme",
+    "dependencies": {
+        "ol": "^6.3.1"
+    },
+    "devDependencies": {
+        "parcel-bundler": "^1.12.4"
+    },
+    "browserslist": [
+        "last 1 Chrome versions"
+    ]
+}
