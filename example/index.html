@@ -12,7 +12,7 @@
     <style>
         #map {
             position: fixed;
-            top: 0px;
+            top: 90px;
             left: 0px;
             width: 100%;
             height: 400px;
@@ -21,15 +21,14 @@
 </head>
 
 <body>
-    <div id='map'>
-        <div>
-            <div class="w3-bar">
-                <button id="export-jpeg" class="w3-bar-item w3-button w3-black"><i class="fa fa-file-image-o"></i> Download JPEG</button>
-                <button id="export-png" class="w3-bar-item w3-button w3-teal"><i class="fa fa-file-image-o"></i> Download PNG</button>
-                <button id="export-pdf" class="w3-bar-item w3-button w3-red"><i class="fa fa-file-pdf-o"></i> Download PDF</button>
-            </div>
-        </div>
+    <p><b>ol-map-screenshot</b> library demo that allows you to export an OpenLayers map as a PNG and JPG image and PDF document.</p>
+    <div class="w3-bar">
+        <button id="export-jpeg-button" class="w3-bar-item w3-button w3-black"><i class="fa fa-file-image-o"></i> Download JPEG</button>
+        <button id="export-png-button" class="w3-bar-item w3-button w3-teal"><i class="fa fa-file-image-o"></i> Download PNG</button>
+        <button id="export-pdf-button" class="w3-bar-item w3-button w3-red"><i class="fa fa-file-pdf-o"></i> Download PDF</button>
     </div>
+
+    <div id='map'></div>
     <a id="image-download"></a>
 
     <script src="./index.js"></script>

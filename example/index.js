@@ -3,7 +3,7 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
-import olMapSreenshot from '../index';
+import olMapScreenshot from '../index';
 
 const map = new Map({
     layers: [
@@ -18,28 +18,34 @@ const map = new Map({
     })
 });
 
-const mapExportParam = {
+const mapScreenshotParam = {
     dim: [190, 160],
-    showDisplayScale: false
+    showDisplayScale: true
 };
 
-document.getElementById('export-jpeg').onclick = async() => {
+document.getElementById('export-jpeg-button').onclick = async() => {
     doDonwload('map-screenshot.jpg');
 };
 
-document.getElementById('export-png').onclick = async() => {
-    mapExportParam.format = "png";
+document.getElementById('export-png-button').onclick = async() => {
+    mapScreenshotParam.format = "png";
     doDonwload('map-screenshot.png');
 };
 
-document.getElementById('export-pdf').onclick = async() => {
-    mapExportParam.format = "jpeg";
+document.getElementById('export-pdf-button').onclick = async() => {
+    mapScreenshotParam.format = "jpeg";
     const data = await doScreenshot();
     const pdf = new jsPDF('p', 'mm', 'a4');
     pdf.setFont("times");
     pdf.setFontSize(16);
     pdf.setFontStyle("bold");
-    pdf.text(10, 20, "ol-map-screenshop example!");
+    const title = "ol-map-screenshop example!";
+    const pageWidth = pdf.internal.pageSize.width;
+    const titleLength = (pdf.getTextDimensions(title).w / (72 / 25.6)) + 2;
+    pdf.text((pageWidth / 2) - titleLength, 20, title);
+    pdf.setFontSize(10);
+    pdf.setFontStyle("italic");
+    pdf.text(10, 28, "Location: Córdoba, Andalucia, España");
     pdf.addImage(data.img, 'JPEG', 10, 30, data.w, data.h);
     pdf.save('map-screenshot.pdf');
 };
@@ -54,7 +60,7 @@ async function doDonwload(fileName) {
 
 async function doScreenshot() {
     const mapCurrentSize = map.getSize();
-    const response = await olMapSreenshot.getScreenshot(map, mapExportParam);
+    const response = await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
     map.setSize(mapCurrentSize);
     return response;
 }
