@@ -52,6 +52,9 @@ const response = await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
 | `scaleLineValue` | number | Map scale line value |
 
 ## Example ##
+
+[Live example](https://jmmluna.github.io/ol-map-screenshot/example/dist/)
+
 ![Screenshot](https://github.com/jmmluna/ol-map-screenshot/blob/master/example-screenshot.png)
 
 ```js
