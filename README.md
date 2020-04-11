@@ -3,8 +3,7 @@
 
 Currently, **ol-map-screenshot requires OpenLayers version 6.x**.
 
-features
---------
+## Features ##
   - Provide promise based API (**async/await**).
   - Customizable parameters in JSON format for screenshot.
   - Supported JPEG and PNG image format.
@@ -28,7 +27,7 @@ const response = await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
 ...
 ```
 
-## Screenshot parameters JSON Object##
+## Screenshot parameters JSON object ##
 
 | name | value | Descripción |
 | --- | --- | --- |
