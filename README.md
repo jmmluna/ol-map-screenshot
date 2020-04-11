@@ -17,18 +17,18 @@ For NodeJS
     npm i ol-map-screenshot
 
 ```js
-import olMapSreenshot from 'ol-map-screenshot';
+import olMapScreenshot from 'ol-map-screenshot';
 ...
-const mapExportParam = {
+const mapScreenshotParam = {
     dim: [190, 160]
 };
 
-const response = await olMapSreenshot.getScreenshot(map, mapExportParam);
+const response = await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
 //response is JSON object. response.img will store the image in base 64
 ...
 ```
 
-## Parameters ##
+## Screenshot parameters JSON Object##
 
 | name | value | Descripción |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ const response = await olMapSreenshot.getScreenshot(map, mapExportParam);
 | `format` | 'png' | indicates the export format of the image. Default is **'jpeg'** |
 | `resolution` | number | screen resolution. Default is **150 dpi** |
 
-## Response object ##
+## Screenshot response JSON object ##
 
 | name | value | Descripción |
 | --- | --- | --- |
