@@ -52,6 +52,7 @@ const response = await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
 | `scaleLineValue` | number | Map scale line value |
 
 ## Example ##
+![Screenshot](https://github.com/jmmluna/ol-map-screenshot/blob/master/example-screenshot.png)
 
 ```js
 import 'ol/ol.css';
@@ -90,7 +91,11 @@ document.getElementById('export-png-button').onclick = async() => {
 
 document.getElementById('export-pdf-button').onclick = async() => {
     mapScreenshotParam.format = "jpeg";
-    const data = await doScreenshot();
+    const response = await doScreenshot();
+    createPDFDocument(response);
+};
+
+function createPDFDocument(data) {
     const pdf = new jsPDF('p', 'mm', 'a4');
     pdf.setFont("times");
     pdf.setFontSize(16);
@@ -104,7 +109,7 @@ document.getElementById('export-pdf-button').onclick = async() => {
     pdf.text(10, 28, "Location: Córdoba, Andalucia, España");
     pdf.addImage(data.img, 'JPEG', 10, 30, data.w, data.h);
     pdf.save('map-screenshot.pdf');
-};
+}
 
 async function doDonwload(fileName) {
     const response = await doScreenshot();

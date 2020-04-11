@@ -30,13 +30,13 @@ class MapImageRenderer {
 
     addScaletoCanvas(ctx, canvas, dinWidth, scaleBarValue, scaleLineValue) {
         const scaleBarValueFormat = '1 : ' + scaleBarValue;
-        const line1 = 6;
+        const line = 6;
         //Offset from the left
         const x_offset = 10;
         //offset from the bottom
         const y_offset = 30;
         const fontsize1 = 20;
-        const font1 = fontsize1 + 'px Arial';
+        const font = fontsize1 + 'px Arial';
         // how big should the scale be (original css-width multiplied)
         const multiplier = 2;
         const scalewidth = parseInt(dinWidth, 10) * multiplier;
@@ -47,7 +47,7 @@ class MapImageRenderer {
         ctx.strokeStyle = "#ffffff";
         ctx.fillStyle = "#000000";
         ctx.lineWidth = 5;
-        ctx.font = font1;
+        ctx.font = font;
         ctx.strokeText(scaleBarValueFormat, 20 + x_offset + fontsize1 / 2, canvas.height - y_offset - fontsize1 / 2);
         ctx.fillText(scaleBarValueFormat, 20 + x_offset + fontsize1 / 2, canvas.height - y_offset - fontsize1 / 2);
 
@@ -61,50 +61,36 @@ class MapImageRenderer {
 
         // Stroke
         ctx.beginPath();
-        ctx.lineWidth = line1 + 2;
+        ctx.lineWidth = line + 2;
         ctx.strokeStyle = "#000000";
         ctx.fillStyle = "#ffffff";
         ctx.moveTo(x_offset, yzero);
         ctx.lineTo(xzero + 1, yzero);
         ctx.stroke();
 
-        //sections black/white
-        ctx.beginPath();
-        ctx.lineWidth = line1;
-        ctx.strokeStyle = "#000000";
-        ctx.moveTo(x_offset, yzero);
-        ctx.lineTo(xfirst, yzero);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.lineWidth = line1;
-        ctx.strokeStyle = "#FFFFFF";
-        ctx.moveTo(xfirst, yzero);
-        ctx.lineTo(xsecond, yzero);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.lineWidth = line1;
-        ctx.strokeStyle = "#000000";
-        ctx.moveTo(xsecond, yzero);
-        ctx.lineTo(xthird, yzero);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.lineWidth = line1;
-        ctx.strokeStyle = "#FFFFFF";
-        ctx.moveTo(xthird, yzero);
-        ctx.lineTo(xfourth, yzero);
-        ctx.stroke();
+        //sections black/white        
+        this.drawScaleBar(ctx, line, "#000000", x_offset, yzero, xfirst, yzero);
+        this.drawScaleBar(ctx, line, "#FFFFFF", xfirst, yzero, xsecond, yzero);
+        this.drawScaleBar(ctx, line, "#000000", xsecond, yzero, xthird, yzero);
+        this.drawScaleBar(ctx, line, "#FFFFFF", xthird, yzero, xfourth, yzero);
 
         ctx.beginPath();
         ctx.textAlign = "left";
         ctx.strokeStyle = "#ffffff";
         ctx.fillStyle = "#000000";
         ctx.lineWidth = 5;
-        ctx.font = font1;
+        ctx.font = font;
         ctx.strokeText(scaleLineValue, xfourth + 5, yzero + 20);
         ctx.fillText(scaleLineValue, xfourth + 5, yzero + 20);
+    }
+
+    drawScaleBar(ctx, line, color, movePoint1, movePoint2, linePoint1, linePoint2) {
+        ctx.beginPath();
+        ctx.lineWidth = line;
+        ctx.strokeStyle = color;
+        ctx.moveTo(movePoint1, movePoint2);
+        ctx.lineTo(linePoint1, linePoint2);
+        ctx.stroke();
     }
 
     createScaleMap(map, mapContext, mapCanvas, dinWidth, isVisble) {
