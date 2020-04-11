@@ -4,7 +4,8 @@
     "description": "This project aims to facilitate the openlayers map screenshot. As an added value, it has the advantage of allowing rendering the map scale bar.",
     "main": "index.js",
     "scripts": {
-        "start": "parcel example/index.html -p 9000 --no-cache"
+        "start": "parcel example/index.html -p 9000 --no-cache",
+        "build": "parcel build example/index.html --public-url ./ --no-cache --no-source-maps"
     },
     "repository": {
         "type": "git",
