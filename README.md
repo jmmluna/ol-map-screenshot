@@ -5,13 +5,14 @@ Currently, **ol-map-screenshot requires OpenLayers version 6.x**.
 
 features
 --------
-  - Based on promises (**async/await**).
-  - Customizable screenshot.
-  - JPEG and PNG format supported.
-  - It has the advantage of allowing rendering the map scale bar in the screenshot
-
+  - Provide promise based API (**async/await**).
+  - Customizable parameters in JSON format for screenshot.
+  - Supported JPEG and PNG image format.
+  - It has the advantage of allowing rendering the map scale bar in the screenshot.
+  - Information associated in the screenshot response.
+  
 ## Usage ##
-For node.js
+For NodeJS
 
     npm i ol-map-screenshot
 
