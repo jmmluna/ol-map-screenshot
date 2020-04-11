@@ -29,21 +29,21 @@ const response = await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
 
 ## Screenshot parameters JSON object ##
 
-| name | value | Descripción |
-| --- | --- | --- |
-| `dim` | array | represents the desired image size in **mm** [width, height]. **Required** |
-| `showDisplayScale` | boolean | indicates that the map scale bar is displayed. Default is **false** |
-| `format` | 'png' | indicates the export format of the image. Default is **'jpeg'** |
-| `resolution` | number | screen resolution. Default is **150 dpi** |
+| name | value | Required | Descripción |
+| --- | --- | --- | --- |
+| `dim` | array | Y | Represents the desired image size in **mm** [width, height]. |
+| `showDisplayScale` | boolean | N | Indicates that the map scale bar is displayed. Default is **false** |
+| `format` | 'png' | N | Indicates the export format of the image. Default is **'jpeg'** |
+| `resolution` | number | N | Screen resolution. Default is **150 dpi** |
 
 ## Screenshot response JSON object ##
 
 | name | value | Descripción |
 | --- | --- | --- |
 | `img` | data:image/**format**;base64 | The base 64 image |
-| `w` | number | original value given of the image width in mm |
-| `h` | number | original value given of the image height in mm |
-| `wPixel` | number | image width value in pixel |
-| `hPixel` | number | image height value in pixel |
-| `scaleBarValue` | number | map scale bar value |
-| `scaleLineValue` | number | map scale line value |
+| `w` | number | Original value given of the image width in mm |
+| `h` | number | Original value given of the image height in mm |
+| `wPixel` | number | Image width value in pixel |
+| `hPixel` | number | Image height value in pixel |
+| `scaleBarValue` | number | Map scale bar value |
+| `scaleLineValue` | number | Map scale line value |
