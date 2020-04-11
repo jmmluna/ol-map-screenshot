@@ -3,7 +3,7 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
-import { MapExporter } from '../index';
+import olMapSreenshot from '../index';
 
 const map = new Map({
     layers: [
@@ -20,29 +20,20 @@ const map = new Map({
 
 const mapExportParam = {
     dim: [190, 160],
-    showDisplayScale: true
+    showDisplayScale: false
 };
 
 document.getElementById('export-jpeg').onclick = async() => {
     doDonwload('map-screenshot.jpg');
-    // const data = await doScreenshot();
-    // const link = document.getElementById('image-download');
-    // link.download = "map-screenshot.jpg";
-    // link.href = data.img;
-    // link.click();
 };
 
 document.getElementById('export-png').onclick = async() => {
-    mapExportParam.format = "PNG";
+    mapExportParam.format = "png";
     doDonwload('map-screenshot.png');
-    // const data = await doScreenshot();
-    // const link = document.getElementById('image-download');
-    // link.download = "map-screenshot.png";
-    // link.href = data.img;
-    // link.click();
 };
 
 document.getElementById('export-pdf').onclick = async() => {
+    mapExportParam.format = "jpeg";
     const data = await doScreenshot();
     const pdf = new jsPDF('p', 'mm', 'a4');
     pdf.setFont("times");
@@ -54,16 +45,16 @@ document.getElementById('export-pdf').onclick = async() => {
 };
 
 async function doDonwload(fileName) {
-    const data = await doScreenshot();
+    const response = await doScreenshot();
     const link = document.getElementById('image-download');
     link.download = fileName;
-    link.href = data.img;
+    link.href = response.img;
     link.click();
 }
 
 async function doScreenshot() {
     const mapCurrentSize = map.getSize();
-    const data = await MapExporter.getScreenshot(map, mapExportParam);
+    const response = await olMapSreenshot.getScreenshot(map, mapExportParam);
     map.setSize(mapCurrentSize);
-    return data;
+    return response;
 }

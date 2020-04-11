@@ -1,7 +1,6 @@
 /**
  * @module ol-map-screenshot
  */
-export { default as MapImageRenderer }
-from './src/MapImageRenderer';
-export { default as MapExporter }
+
+export { default }
 from './src/MapExporter';

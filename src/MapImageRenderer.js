@@ -22,12 +22,8 @@ class MapImageRenderer {
             }
         });
 
-        let mapImage = {};
-        if (param.showDisplayScale) {
-            const scaleInfo = this.createScaleMap(map, mapContext, mapCanvas, param.dinWidth);
-            mapImage = { img: mapCanvas.toDataURL(param.format), scaleBarValue: scaleInfo.scaleBarValue, scaleLineValue: scaleInfo.scaleLineValue };
-        } else
-            mapImage = { img: mapCanvas.toDataURL(param.format) };
+        const scaleInfo = this.createScaleMap(map, mapContext, mapCanvas, param.dinWidth, param.showDisplayScale);
+        const mapImage = { img: mapCanvas.toDataURL(param.format), scaleBarValue: scaleInfo.scaleBarValue, scaleLineValue: scaleInfo.scaleLineValue };
 
         return mapImage;
     }
@@ -111,7 +107,7 @@ class MapImageRenderer {
         ctx.fillText(scaleLineValue, xfourth + 5, yzero + 20);
     }
 
-    createScaleMap(map, mapContext, mapCanvas, dinWidth) {
+    createScaleMap(map, mapContext, mapCanvas, dinWidth, isVisble) {
         this.createScaleContainer();
         this._scaleLine = this.getScaleControl(false, SCALE_LINE_TARGET);
         this._scaleBar = this.getScaleControl(true, SCALE_BAR_TARGET);
@@ -120,7 +116,9 @@ class MapImageRenderer {
         map.renderSync();
         const scaleBarValue = Math.round(this._scaleBar.getScaleForResolution()).toLocaleString();
         const scaleLineValue = document.getElementsByClassName("ol-scale-line-inner")[0].innerHTML;
-        this.addScaletoCanvas(mapContext, mapCanvas, dinWidth, scaleBarValue, scaleLineValue);
+        if (isVisble)
+            this.addScaletoCanvas(mapContext, mapCanvas, dinWidth, scaleBarValue, scaleLineValue);
+
         return { scaleBarValue: scaleBarValue, scaleLineValue: scaleLineValue }
     }
 
