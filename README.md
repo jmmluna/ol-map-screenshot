@@ -1,5 +1,5 @@
 # ol-map-screenshot
-**ol-map-screenshot** is a simple and easy-to-use library. This project aims to facilitate the [OpenLayers](https://openlayers.org/) map screenshot.
+**ol-map-screenshot** is a simple and easy-to-use library to facilitate the [OpenLayers](https://openlayers.org/) map screenshot.
 
 Currently, **ol-map-screenshot requires OpenLayers version 6.x**.
 
