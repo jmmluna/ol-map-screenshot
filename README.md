@@ -2,16 +2,16 @@
 
 ![Screenshot](https://github.com/jmmluna/ol-map-screenshot/blob/master/screenshot.jpg)
 
-**ol-map-screenshot** is a simple and easy-to-use library to facilitate the [OpenLayers](https://openlayers.org/) map screenshot. ol-map-screenshot is inspired by [Map Export](https://openlayers.org/en/latest/examples/export-map.html) and [Export PDF](https://openlayers.org/en/latest/examples/export-pdf.html) examples by OpenLayers.
+**ol-map-screenshot** is a simple and easy-to-use library to provide the [OpenLayers](https://openlayers.org/) map screenshot. ol-map-screenshot is inspired by [Map Export](https://openlayers.org/en/latest/examples/export-map.html) and [Export PDF](https://openlayers.org/en/latest/examples/export-pdf.html) examples by OpenLayers.
 
 Currently, **ol-map-screenshot requires OpenLayers version 6.x**.
 
 ## Features ##
-  - Provide promise based API (**async/await**).
-  - Customizable parameters in JSON format for screenshot.
-  - Supported JPEG and PNG image format.
-  - It has the advantage of allowing rendering the map scale bar in the screenshot.
-  - Information associated in the screenshot response.
+  - Promise-based API (**async/await**).
+  - Customizable screenshot options using JSON format.
+  - JPEG and PNG image format support.
+  - Map scale bar rendering in the screenshot.
+  - Screenshot metadata provided in the response.
   
 ## Usage ##
 For NodeJS
@@ -32,22 +32,22 @@ const response = await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
 
 ## Screenshot parameters JSON object ##
 
-| name | value | Required | Descripción |
+| name | value | Required | Description |
 | --- | --- | --- | --- |
-| `dim` | array | Y | Represents the desired image size in **mm** [width, height]. |
-| `showDisplayScale` | boolean | N | Indicates that the map scale bar is displayed. Default is **false** |
-| `format` | 'png' | N | Indicates the export format of the image. Default is **'jpeg'** |
+| `dim` | array | Y | Desired image size in **mm** [width, height]. |
+| `showDisplayScale` | boolean | N | Map scale bar is displayed. Default is **false** |
+| `format` | 'png' | N | Export format of the image. Default is **'jpeg'** |
 | `resolution` | number | N | Screen resolution. Default is **150 dpi** |
 
 ## Screenshot response JSON object ##
 
-| name | value | Descripción |
+| name | value | Description |
 | --- | --- | --- |
 | `img` | data:image/**format**;base64 | The base 64 image |
-| `w` | number | Original value given of the image width in mm |
-| `h` | number | Original value given of the image height in mm |
-| `wPixel` | number | Image width value in pixel |
-| `hPixel` | number | Image height value in pixel |
+| `w` | number | Given image width in mm |
+| `h` | number | Given image height in mm |
+| `wPixel` | number | Image width value in pixels |
+| `hPixel` | number | Image height value in pixels |
 | `scaleBarValue` | number | Map scale bar value |
 | `scaleLineValue` | number | Map scale line value |
 
