@@ -14,9 +14,11 @@ Currently, **ol-map-screenshot requires OpenLayers version 6.x**.
   - Screenshot metadata provided in the response.
   
 ## Usage ##
-For NodeJS
+Install the ol-map-screenshot package:
 
     npm i ol-map-screenshot
+
+To use the library just import it into the application:
 
 ```js
 import olMapScreenshot from 'ol-map-screenshot';
