@@ -30,7 +30,9 @@
     },
     "homepage": "https://github.com/jmmluna/ol-map-screenshot#readme",
     "dependencies": {
-        "ol": "^6.3.1"
+        "jquery": "^3.5.0",
+        "ol": "^6.3.1",
+        "popper.js": "^1.16.1"
     },
     "devDependencies": {
         "parcel-bundler": "^1.12.4"
