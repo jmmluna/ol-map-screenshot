@@ -8,15 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/example.css">
 
-    <link href="bootstrap/prism.css" rel="stylesheet" />
+    <link href="resources/prism.css" rel="stylesheet" />
 
     <style>
         #map {
-            /* position: fixed; */
-            /* top: 90px;
-            left: 0px; */
             width: 100%;
             height: 400px;
         }
@@ -24,7 +22,6 @@
 </head>
 
 <body>
-
     <div class='container text-center'>
         <h1 class="h2 py-3">ol-map-screenshot library demo</h1>
         <p>It allows you to export an OpenLayers map as a PNG and JPG image and PDF document.</p>
@@ -46,9 +43,37 @@
 
             </div>
         </div>
-
         <div class="row-fluid">
 
+            <pre><legend>index.html</legend><code id="example-html-source" class="language-markup">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;OpenLayers Map Screenshot&lt;/title&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;
+                
+        &lt;style&gt;
+        #map {           
+            width: 100%;
+            height: 400px;
+        }
+        &lt;/style&gt;
+    &lt;/head&gt;
+                
+    &lt;body&gt;                    
+        &lt;button id=&quot;export-jpeg-button&quot; type=&quot;button&quot;&gt; JPEG&lt;/button&gt;
+        &lt;button id=&quot;export-png-button&quot; type=&quot;button&quot;&gt; PNG&lt;/button&gt;
+        &lt;button id=&quot;export-pdf-button&quot; type=&quot;button&quot;&gt; PDF&lt;/button&gt;                                                                       
+        &lt;div id=&#39;map&#39;&gt;&lt;/div&gt;                
+        &lt;a id=&quot;image-download&quot;&gt;&lt;/a&gt;                        
+    &lt;/body&gt;                    
+&lt;/html&gt;
+            </code></pre>
+        </div>
+
+        <div class="row-fluid">
             <pre><legend>index.js</legend><code id="example-js-source" class="language-js">
 import 'ol/ol.css';
 import Map from 'ol/Map';
@@ -126,13 +151,11 @@ async function doScreenshot() {
 
     <a id="image-download"></a>
 
-    <script src="bootstrap/jquery-3.4.1.slim.min.js"></script>
-    <script src="bootstrap/popper.min.js"></script>
-    <script src="bootstrap/bootstrap.min.js"></script>
-    <script src="bootstrap/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
-
+    <script src="resources/jquery-3.4.1.slim.min.js"></script>
+    <script src="resources/popper.min.js"></script>
+    <script src="resources/bootstrap.min.js"></script>
+    <script src="resources/prism.min.js"></script>
+    <script src="resources/jspdf.min.js"></script>
     <script src="./index.js"></script>
 </body>
 

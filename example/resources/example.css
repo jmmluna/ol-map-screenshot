@@ -1,0 +1,14 @@
+pre[class*="language-"] {
+    margin-top: 20px;
+    background: #FFFFFF;
+}
+
+pre>legend {
+    font-size: 100%;
+    font-weight: bold;
+}
+
+pre {
+    border: 1px solid #eee;
+    border-radius: 0;
+}
