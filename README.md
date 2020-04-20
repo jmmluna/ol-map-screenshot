@@ -14,7 +14,7 @@ Currently, **ol-map-screenshot requires OpenLayers version 6.x**.
   - Screenshot metadata provided in the response.
   
 ## Usage ##
-Install the ol-map-screenshot package:
+Install the ol-map-screenshot package using npm:
 
     npm i ol-map-screenshot
 
@@ -118,10 +118,13 @@ function createPDFDocument(data) {
 
 async function doDonwload(fileName) {
     const response = await doScreenshot();
-    const link = document.getElementById('image-download');
-    link.download = fileName;
-    link.href = response.img;
-    link.click();
+    const element = document.createElement('a');
+    element.setAttribute('href', response.img);
+    element.setAttribute('download', fileName);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
 }
 
 async function doScreenshot() {
@@ -131,3 +134,5 @@ async function doScreenshot() {
     return response;
 }
 ```
+## Contributing ##
+Build the library with npm run build. This will fetch all dependencies and then compile the dist files. To load the example locally, you can start a web server with npm start and go to localhost: 9000.
