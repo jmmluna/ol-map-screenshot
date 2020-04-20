@@ -33,9 +33,11 @@ document.getElementById('export-png-button').onclick = async() => {
 };
 
 document.getElementById('export-pdf-button').onclick = async() => {
+    showloader(true);
     mapScreenshotParam.format = "jpeg";
     const response = await doScreenshot();
     createPDFDocument(response);
+    showloader(false);
 };
 
 function createPDFDocument(data) {
@@ -55,11 +57,16 @@ function createPDFDocument(data) {
 }
 
 async function doDonwload(fileName) {
+    showloader(true);
     const response = await doScreenshot();
-    const link = document.getElementById('image-download');
-    link.download = fileName;
-    link.href = response.img;
-    link.click();
+    const element = document.createElement('a');
+    element.setAttribute('href', response.img);
+    element.setAttribute('download', fileName);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    showloader(false);
 }
 
 async function doScreenshot() {
@@ -67,4 +74,12 @@ async function doScreenshot() {
     const response = await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
     map.setSize(mapCurrentSize);
     return response;
+}
+
+function showloader(visible) {
+    const loader = document.getElementById('loader');
+    if (visible)
+        loader.style.display = 'block';
+    else
+        loader.style.display = 'none';
 }

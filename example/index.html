@@ -22,19 +22,27 @@
 </head>
 
 <body>
-    <div class='container text-center'>
-        <h1 class="h2 py-3">ol-map-screenshot library demo</h1>
-        <p>It allows you to export an OpenLayers map as a PNG / JPG image or PDF document.</p>
+    <div class='container '>
+        <div class="text-center">
+            <h1 class="h2 py-3">ol-map-screenshot library demo</h1>
+            <p>It allows you to export an OpenLayers map as a PNG / JPG image or PDF document.</p>
+        </div>
         <div class='row'>
-            <div class='col-4'></div>
-            <div class='col-4'>
+            <div class='col-3'>
+                <div id="loader" class='text-right lead' style="display:none">
+                    <small class="text-muted">
+                        Loading...<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+                    </small>
+                </div>
+            </div>
+            <div class='col-6 text-center'>
                 <div class="btn-group mr-2 mb-3">
                     <button id="export-jpeg-button" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-download"></i> JPEG</button>
                     <button id="export-png-button" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-download"></i> PNG</button>
                     <button id="export-pdf-button" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-file-pdf-o"></i> PDF</button>
                 </div>
             </div>
-            <div class='col-4'></div>
+            <div class='col-3'></div>
         </div>
 
         <div class='row'>
@@ -66,8 +74,7 @@
         &lt;button id=&quot;export-jpeg-button&quot; type=&quot;button&quot;&gt; JPEG&lt;/button&gt;
         &lt;button id=&quot;export-png-button&quot; type=&quot;button&quot;&gt; PNG&lt;/button&gt;
         &lt;button id=&quot;export-pdf-button&quot; type=&quot;button&quot;&gt; PDF&lt;/button&gt;                                                                       
-        &lt;div id=&#39;map&#39;&gt;&lt;/div&gt;                
-        &lt;a id=&quot;image-download&quot;&gt;&lt;/a&gt;                        
+        &lt;div id=&#39;map&#39;&gt;&lt;/div&gt;                                                
     &lt;/body&gt;                    
 &lt;/html&gt;
             </code></pre>
@@ -133,10 +140,13 @@ function createPDFDocument(data) {
                     
 async function doDonwload(fileName) {
     const response = await doScreenshot();
-    const link = document.getElementById('image-download');
-    link.download = fileName;
-    link.href = response.img;
-    link.click();
+    const element = document.createElement('a');
+    element.setAttribute('href', response.img);
+    element.setAttribute('download', fileName);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
 }
                     
 async function doScreenshot() {
@@ -149,13 +159,11 @@ async function doScreenshot() {
 
     </div>
 
-    <a id="image-download"></a>
-
     <script src="resources/jquery-3.4.1.slim.min.js"></script>
     <script src="resources/popper.min.js"></script>
     <script src="resources/bootstrap.min.js"></script>
     <script src="resources/prism.min.js"></script>
-    <script src="resources/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
     <script src="./index.js"></script>
 </body>
 
