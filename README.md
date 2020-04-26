@@ -63,6 +63,52 @@ const response = await olMapScreenshot.getScreenshot(map, {
 | `scaleBarValue` | number | Map scale bar value |
 | `scaleLineValue` | number | Map scale line value |
 
+## CORS ##
+For security reasons, a browser can mark a canvas as tainted when you load images from another domain. In that case the browser blocks canvas exporting. To avoid this block, the **tileLoadFunction** property is set when creating the tile layer.
+
+```js
+getWMSLayer(layer) {
+        return new TileLayer({
+            title: layer.title,
+            source: new TileWMS({
+                url: layer.url,
+                params: {
+                    LAYERS: layer.name,
+                    SRS: 'EPSG:3857',
+                    FORMAT: 'image/png'
+                },
+                tileLoadFunction: proxyTileLoader.load
+            }),
+            visible: true
+        });
+    }
+```
+The **ProxyTileLoader.js** file is defined below:
+```js
+const proxy = "...?url="; //set proxy url
+
+module.exports = {    
+    load: function(tile, src) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", proxy + encodeURIComponent(src).replace(/'/g, "%27").replace(/"/g, "%22"));
+        xhr.responseType = "arraybuffer";
+
+        xhr.onload = function() {
+            var arrayBufferView = new Uint8Array(this.response);
+            var blob = new Blob([arrayBufferView], { type: 'image/png' });
+            var urlCreator = window.URL || window.webkitURL;
+            var imageUrl = urlCreator.createObjectURL(blob);
+            tile.getImage().src = imageUrl;
+        };
+        xhr.onerror = function() {
+            console.log("ERROR loading tiles from proxy.");
+        };
+
+        xhr.send();
+    }
+};
+```
+
 ## Example ##
 
 [Live example](https://jmmluna.github.io/ol-map-screenshot/example/dist/)
