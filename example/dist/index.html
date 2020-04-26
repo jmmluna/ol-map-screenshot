@@ -44,8 +44,7 @@ const map = new Map({
 });
                     
 const mapScreenshotParam = {
-    dim: [190, 160],
-    showDisplayScale: true
+    dim: [190, 160]
 };
                     
 document.getElementById('export-jpeg-button').onclick = async() => {
@@ -91,10 +90,12 @@ async function doDonwload(fileName) {
 }
                     
 async function doScreenshot() {
-    const mapCurrentSize = map.getSize();
-    const response = await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
-    map.setSize(mapCurrentSize);
-    return response;
+    try {
+        return await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
+    } catch (ex) {
+        showloader(false);
+        alert(ex.message);
+    }
 }
-</code></pre></div> </div> <script src="jquery-3.4.1.slim.min.eaa7fef5.js"></script> <script src="popper.min.54f91930.js"></script> <script src="bootstrap.min.3f4c8f68.js"></script> <script src="prism.min.f56599be.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script> <script src="example.99c5c007.js"></script>
+</code></pre></div> </div> <script src="jquery-3.4.1.slim.min.eaa7fef5.js"></script> <script src="popper.min.54f91930.js"></script> <script src="bootstrap.min.3f4c8f68.js"></script> <script src="prism.min.f56599be.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script> <script src="example.22782844.js"></script>
 </body></html>

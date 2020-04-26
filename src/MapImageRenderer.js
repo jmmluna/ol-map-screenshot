@@ -22,13 +22,13 @@ class MapImageRenderer {
             }
         });
 
-        const scaleInfo = this.createScaleMap(map, mapContext, mapCanvas, param.dinWidth, param.showDisplayScale);
+        const scaleInfo = this.createScaleMap(map, mapContext, mapCanvas, param.scaleBarLength, param.showDisplayScale);
         const mapImage = { img: mapCanvas.toDataURL(param.format), scaleBarValue: scaleInfo.scaleBarValue, scaleLineValue: scaleInfo.scaleLineValue };
 
         return mapImage;
     }
 
-    addScaletoCanvas(ctx, canvas, dinWidth, scaleBarValue, scaleLineValue) {
+    addScaletoCanvas(ctx, canvas, scaleBarLength, scaleBarValue, scaleLineValue) {
         const scaleBarValueFormat = '1 : ' + scaleBarValue;
         const line = 6;
         //Offset from the left
@@ -39,7 +39,7 @@ class MapImageRenderer {
         const font = fontsize1 + 'px Arial';
         // how big should the scale be (original css-width multiplied)
         const multiplier = 2;
-        const scalewidth = parseInt(dinWidth, 10) * multiplier;
+        const scalewidth = parseInt(scaleBarLength, 10) * multiplier;
 
         //Scale Text
         ctx.beginPath();

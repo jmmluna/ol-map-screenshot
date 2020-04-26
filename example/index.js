@@ -19,8 +19,7 @@ const map = new Map({
 });
 
 const mapScreenshotParam = {
-    dim: [190, 160],
-    showDisplayScale: true
+    dim: [190, 160]
 };
 
 document.getElementById('export-jpeg-button').onclick = async() => {
@@ -70,10 +69,12 @@ async function doDonwload(fileName) {
 }
 
 async function doScreenshot() {
-    const mapCurrentSize = map.getSize();
-    const response = await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
-    map.setSize(mapCurrentSize);
-    return response;
+    try {
+        return await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
+    } catch (ex) {
+        showloader(false);
+        alert(ex.message);
+    }
 }
 
 function showloader(visible) {

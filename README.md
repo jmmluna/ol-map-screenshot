@@ -13,7 +13,7 @@ Currently, **ol-map-screenshot requires OpenLayers version 6.x**.
   - Map scale bar rendering in the screenshot.
   - Screenshot metadata provided in the response.
   
-## Usage ##
+## Basic usage ##
 Install the ol-map-screenshot package using npm:
 
     npm i ol-map-screenshot
@@ -22,22 +22,32 @@ To use the library just import it into the application:
 
 ```js
 import olMapScreenshot from 'ol-map-screenshot';
-...
-const mapScreenshotParam = {
-    dim: [190, 160]
-};
 
-const response = await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
+const response = await olMapScreenshot.getScreenshot(map);
 //response is JSON object. response.img will store the image in base 64
 ...
+```
+By default, the screenshot is the map size.
+
+## Option usage ##
+Parameters can be specified to customize map screenshot:
+```js
+import olMapScreenshot from 'ol-map-screenshot';
+
+const response = await olMapScreenshot.getScreenshot(map, {
+    dim: [190, 160], 
+    scaleBarLength: 100
+});
+
 ```
 
 ## Screenshot parameters JSON object ##
 
 | name | value | Required | Description |
 | --- | --- | --- | --- |
-| `dim` | array | Y | Desired image size in **mm** [width, height]. |
-| `showDisplayScale` | boolean | N | Map scale bar is displayed. Default is **false** |
+| `dim` | array | N | Desired image size in **mm** [width, height]. |
+| `showDisplayScale` | boolean | N | Map scale bar is displayed. Default is **true** |
+| `scaleBarLength` | number | N | Map scale bar length. Default is **140 px** |
 | `format` | 'png' | N | Export format of the image. Default is **'jpeg'** |
 | `resolution` | number | N | Screen resolution. Default is **150 dpi** |
 
@@ -81,8 +91,7 @@ const map = new Map({
 });
 
 const mapScreenshotParam = {
-    dim: [190, 160],
-    showDisplayScale: true
+    dim: [190, 160]
 };
 
 document.getElementById('export-jpeg-button').onclick = async() => {
@@ -128,10 +137,12 @@ async function doDonwload(fileName) {
 }
 
 async function doScreenshot() {
-    const mapCurrentSize = map.getSize();
-    const response = await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
-    map.setSize(mapCurrentSize);
-    return response;
+    try {
+        return await olMapScreenshot.getScreenshot(map, mapScreenshotParam);
+    } catch (ex) {
+        showloader(false);
+        alert(ex.message);
+    }
 }
 ```
 ## Contributing ##
