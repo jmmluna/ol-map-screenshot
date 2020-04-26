@@ -88,19 +88,19 @@ The **ProxyTileLoader.js** file is defined below:
 const proxy = "...?url="; //set proxy url
 
 module.exports = {    
-    load: function(tile, src) {
-        var xhr = new XMLHttpRequest();
+    load: (tile, src) => {
+        const xhr = new XMLHttpRequest();
         xhr.open("GET", proxy + encodeURIComponent(src).replace(/'/g, "%27").replace(/"/g, "%22"));
         xhr.responseType = "arraybuffer";
 
-        xhr.onload = function() {
-            var arrayBufferView = new Uint8Array(this.response);
-            var blob = new Blob([arrayBufferView], { type: 'image/png' });
-            var urlCreator = window.URL || window.webkitURL;
-            var imageUrl = urlCreator.createObjectURL(blob);
+        xhr.onload = () => {
+            const arrayBufferView = new Uint8Array(this.response);
+            const blob = new Blob([arrayBufferView], { type: 'image/png' });
+            const urlCreator = window.URL || window.webkitURL;
+            const imageUrl = urlCreator.createObjectURL(blob);
             tile.getImage().src = imageUrl;
         };
-        xhr.onerror = function() {
+        xhr.onerror = () => {
             console.log("ERROR loading tiles from proxy.");
         };
 
