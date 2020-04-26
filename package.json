@@ -1,7 +1,7 @@
 {
     "name": "ol-map-screenshot",
     "version": "1.0.0",
-    "description": "This project aims to facilitate the openlayers map screenshot. As an added value, it has the advantage of allowing rendering the map scale bar.",
+    "description": "A simple and easy-to-use library to provide the OpenLayers map screenshot.",
     "main": "index.js",
     "scripts": {
         "start": "parcel example/index.html -p 9000 --no-cache",
