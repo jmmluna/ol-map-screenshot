@@ -111,7 +111,7 @@ module.exports = {
 
 ## Example ##
 
-[Live example](https://jmmluna.github.io/ol-map-screenshot/demo/)
+[Live example](https://jmmluna.github.io/ol-map-screenshot/demo/) | 
 [Download demo project](https://jmmluna.github.io/ol-map-screenshot/demo/ol-map-screenshot-demo.zip)
 
 ![Screenshot](https://github.com/jmmluna/ol-map-screenshot/blob/master/example-screenshot.png)
