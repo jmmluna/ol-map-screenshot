@@ -123,6 +123,10 @@ import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import olMapScreenshot from 'ol-map-screenshot';
+import '@fortawesome/fontawesome-free/css/all.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
+import jsPDF from 'jspdf';
 
 const map = new Map({
     layers: [
@@ -162,9 +166,9 @@ function createPDFDocument(data) {
     pdf.setFontSize(16);
     pdf.setFontStyle("bold");
     const title = "ol-map-screenshop example!";
-    const pageWidth = pdf.internal.pageSize.width;
-    const titleLength = (pdf.getTextDimensions(title).w / (72 / 25.6)) + 2;
-    pdf.text((pageWidth / 2) - titleLength, 20, title);
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    pdf.text((pageWidth / 2) - (title.length), 20, title);
+    pdf.text(pageWidth, 20, title);
     pdf.setFontSize(10);
     pdf.setFontStyle("italic");
     pdf.text(10, 28, "Location: Córdoba, Andalucia, España");
@@ -193,7 +197,7 @@ async function doScreenshot() {
 }
 ```
 ## Contributing ##
-To load the test locally, you can start a web server with npm start and go to localhost: 9000.
+To load the test locally, you can start a web server with **npm start** and go to localhost: 9000.
 
 ## MIT License ##
 
