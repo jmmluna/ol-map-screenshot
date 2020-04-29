@@ -109,9 +109,9 @@ module.exports = {
 };
 ```
 
-## Example ##
+## Demo ##
 
-[Live example](https://jmmluna.github.io/ol-map-screenshot/demo/) | 
+[Live Demo](https://jmmluna.github.io/ol-map-screenshot/demo/) | 
 [Download demo project](https://jmmluna.github.io/ol-map-screenshot/demo/ol-map-screenshot-demo.zip)
 
 ![Screenshot](https://github.com/jmmluna/ol-map-screenshot/blob/master/example-screenshot.png)
@@ -193,7 +193,7 @@ async function doScreenshot() {
 }
 ```
 ## Contributing ##
-Build the library with npm run build. This will fetch all dependencies and then compile the dist files. To load the example locally, you can start a web server with npm start and go to localhost: 9000.
+To load the test locally, you can start a web server with npm start and go to localhost: 9000.
 
 ## MIT License ##
 

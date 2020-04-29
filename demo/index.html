@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>OpenLayers Map Screenshot Demo</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css"><link rel="stylesheet" href="bootstrap.min.697c792c.css"><link rel="stylesheet" href="demo.6312aa21.css"><link href="prism.0ff39440.css" rel="stylesheet"><link rel="stylesheet" href="ol-map-screenshot-demo.1f948dd0.css"></head><body> <div class="container"> <div class="text-center"> <h1 class="h2 py-3">ol-map-screenshot library demo</h1> <p>It allows you to export an OpenLayers map as a PNG / JPG image or PDF document.</p> </div> <div class="row"> <div class="col-3"> <div id="loader" class="text-right lead" style="display:none"> <small class="text-muted"> Loading...<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i> </small> </div> </div> <div class="col-6 text-center"> <div class="btn-group mr-2 mb-3"> <button id="export-jpeg-button" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-download"></i> JPEG</button> <button id="export-png-button" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-download"></i> PNG</button> <button id="export-pdf-button" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-file-pdf-o"></i> PDF</button> </div> </div> <div class="col-3"></div> </div> <div class="row"> <div class="col-12"> <div id="map"></div> </div> </div> <div class="row-fluid"> <pre><legend>index.html</legend><code id="example-html-source" class="language-markup">
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>OpenLayers Map Screenshot Demo</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="demo.6312aa21.css"><link href="prism.0ff39440.css" rel="stylesheet"><link rel="stylesheet" href="ol-map-screenshot-demo.39c95c43.css"></head><body> <div class="container"> <div class="text-center"> <h1 class="h2 py-3">ol-map-screenshot library demo</h1> <p>It allows you to export an OpenLayers map as a PNG / JPG image or PDF document.</p> </div> <div class="row"> <div class="col-3"> <div id="loader" class="text-right lead" style="display:none"> <small class="text-muted"> Loading...<i class="fas fa-circle-notch fa-spin fa-3x fa-fw"></i> </small> </div> </div> <div class="col-6 text-center"> <div class="btn-group mr-2 mb-3"> <button id="export-jpeg-button" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-download"></i> JPEG</button> <button id="export-png-button" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-download"></i> PNG</button> <button id="export-pdf-button" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-file-pdf-o"></i> PDF</button> </div> </div> <div class="col-3"></div> </div> <div class="row"> <div class="col-12"> <div id="map"></div> </div> </div> <div class="row-fluid"> <pre><legend>index.html</legend><code id="example-html-source" class="language-markup">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -29,6 +29,10 @@ import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import olMapScreenshot from 'ol-map-screenshot';
+import '@fortawesome/fontawesome-free/css/all.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
+import jsPDF from 'jspdf';
                     
 const map = new Map({
     layers: [
@@ -68,9 +72,9 @@ function createPDFDocument(data) {
     pdf.setFontSize(16);
     pdf.setFontStyle("bold");
     const title = "ol-map-screenshop example!";
-    const pageWidth = pdf.internal.pageSize.width;
-    const titleLength = (pdf.getTextDimensions(title).w / (72 / 25.6)) + 2;
-    pdf.text((pageWidth / 2) - titleLength, 20, title);
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    pdf.text((pageWidth / 2) - (title.length), 20, title);
+    pdf.text(pageWidth, 20, title);
     pdf.setFontSize(10);
     pdf.setFontStyle("italic");
     pdf.text(10, 28, "Location: Córdoba, Andalucia, España");
@@ -97,5 +101,5 @@ async function doScreenshot() {
         alert(ex.message);
     }
 }
-</code></pre></div> </div> <script src="jquery-3.4.1.slim.min.eaa7fef5.js"></script> <script src="popper.min.54f91930.js"></script> <script src="bootstrap.min.3f4c8f68.js"></script> <script src="prism.min.f56599be.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script> <script src="ol-map-screenshot-demo.0ea3ff27.js"></script>
+</code></pre></div> </div> <script src="prism.min.f56599be.js"></script> <script src="ol-map-screenshot-demo.1b114e34.js"></script>
 </body></html>
