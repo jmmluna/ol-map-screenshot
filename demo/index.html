@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>OpenLayers Map Screenshot Demo</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="demo.6312aa21.css"><link href="prism.0ff39440.css" rel="stylesheet"><link rel="stylesheet" href="ol-map-screenshot-demo.39c95c43.css"></head><body> <div class="container"> <div class="text-center"> <h1 class="h2 py-3">ol-map-screenshot library demo</h1> <p>It allows you to export an OpenLayers map as a PNG / JPG image or PDF document.</p> </div> <div class="row"> <div class="col-3"> <div id="loader" class="text-right lead" style="display:none"> <small class="text-muted"> Loading...<i class="fas fa-circle-notch fa-spin fa-3x fa-fw"></i> </small> </div> </div> <div class="col-6 text-center"> <div class="btn-group mr-2 mb-3"> <button id="export-jpeg-button" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-download"></i> JPEG</button> <button id="export-png-button" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-download"></i> PNG</button> <button id="export-pdf-button" type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-file-pdf-o"></i> PDF</button> </div> </div> <div class="col-3"></div> </div> <div class="row"> <div class="col-12"> <div id="map"></div> </div> </div> <div class="row-fluid"> <pre><legend>index.html</legend><code id="example-html-source" class="language-markup">
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>OpenLayers Map Screenshot Demo</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="index.64066b31.css"><link href="index.0f5d0abe.css" rel="stylesheet"></head><body> <div class="container"> <div class="text-center"> <h1 class="h2 py-3">ol-map-screenshot library demo</h1> <p> It allows you to export an OpenLayers map as a PNG / JPG image or PDF document. </p> </div> <div class="row"> <div class="col-3"> <div id="loader" class="lead text-right" style="display:none"> <small class="text-muted"> Loading...<i class="fa-3x fa-circle-notch fa-fw fa-spin fas"></i> </small> </div> </div> <div class="col-6 text-center"> <div class="btn-group mb-3 mr-2"> <button id="export-jpeg-button" type="button" class="btn btn-outline-secondary btn-sm"> <i class="fa fa-download"></i> JPEG </button> <button id="export-png-button" type="button" class="btn btn-outline-secondary btn-sm"> <i class="fa fa-download"></i> PNG </button> <button id="export-pdf-button" type="button" class="btn btn-outline-secondary btn-sm"> <i class="fa fa-file-pdf-o"></i> PDF </button> </div> </div> <div class="col-3"></div> </div> <div class="row"> <div class="col-12"> <div id="map"></div> </div> </div> <div class="row-fluid"> <pre><legend>index.html</legend><code id="example-html-source" class="language-markup">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -52,6 +52,7 @@ const mapScreenshotParam = {
 };
                     
 document.getElementById('export-jpeg-button').onclick = async() => {
+    mapScreenshotParam.format = "jpeg";
     doDonwload('map-screenshot.jpg');
 };
                     
@@ -101,5 +102,4 @@ async function doScreenshot() {
         alert(ex.message);
     }
 }
-</code></pre></div> </div> <script src="prism.min.f56599be.js"></script> <script src="ol-map-screenshot-demo.1b114e34.js"></script>
-</body></html>
+</code></pre> </div> </div> <script src="index.ef4b206b.js"></script> <script src="index.bddd2146.js"></script> </body></html>
